@@ -21,5 +21,6 @@ signature SET =
       val toList : set -> elem list
       val foldl : (elem * 'a -> 'a) -> 'a -> set -> 'a
       val foldr : (elem * 'a -> 'a) -> 'a -> set -> 'a
+      val all : (elem -> bool) -> set -> bool
       val app : (elem -> unit) -> set -> unit
   end

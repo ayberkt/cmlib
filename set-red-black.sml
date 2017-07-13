@@ -59,6 +59,8 @@ functor RedBlackSet (structure Elem : ORDERED)
 
       fun foldl f x (_, tree) = foldlMain f x tree
 
+      val all = fn f => fn X => foldl (fn (x, acc) => f x andalso acc) true X
+
       fun foldr f x (_, tree) = foldrMain f x tree
 
       fun toList (_, tree) = foldrMain (op ::) [] tree

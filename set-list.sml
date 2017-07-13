@@ -96,8 +96,8 @@ functor ListSet (structure Elem : ORDERED)
 
       fun eq (l1, l2) =
          (case (l1, l2) of
-             ([], []) => 
-                true
+             ([], []) =>
+               true
            | (elem1 :: rest1, elem2 :: rest2) =>
                 Elem.eq (elem1, elem2)
                 andalso
@@ -107,7 +107,7 @@ functor ListSet (structure Elem : ORDERED)
 
       fun subset (l1, l2) =
          (case (l1, l2) of
-             ([], _) => 
+             ([], _) =>
                 true
            | (elem1 :: rest1, elem2 :: rest2) =>
                 (case Elem.compare (elem1, elem2) of
@@ -125,6 +125,7 @@ functor ListSet (structure Elem : ORDERED)
       fun toList l = l
       val foldl = List.foldl
       val foldr = List.foldl
+      val all = fn f => fn X => foldl (fn (x, acc) => f x andalso acc) true X
       val app = List.app
 
    end

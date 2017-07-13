@@ -191,7 +191,7 @@ functor SplaySet (structure Elem : ORDERED)
                           andalso
                           subsetMain right1 right2
                      | _ => false)
-                end)         
+                end)
 
       fun subset ((_, tree1), (_, tree2)) = subsetMain tree1 tree2
 
@@ -214,6 +214,8 @@ functor SplaySet (structure Elem : ORDERED)
       fun foldl f x (_, tree) = foldlMain f x tree
 
       fun foldr f x (_, tree) = foldrMain f x tree
+
+      val all = fn f => fn X => foldl (fn (x, acc) => f x andalso acc) true X
 
       fun appMain f tree =
          (case tree of
